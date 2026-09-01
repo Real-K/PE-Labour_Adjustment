@@ -8,7 +8,8 @@ Analysis code, aggregate result artifacts, and reproducible exhibits for the man
 |---|---|
 | [`01_paper_exhibits.ipynb`](01_paper_exhibits.ipynb) | Figures 1–2 rebuilt from artifacts; main-text Tables 1–5 displayed and verified cell-by-cell |
 | [`02_appendix_exhibits.ipynb`](02_appendix_exhibits.ipynb) | Online-appendix Tables A1–H2 displayed and verified |
-| [`03_traceability.ipynb`](03_traceability.ipynb) | Every decimal token in the manuscript (1,196) traced to the artifacts; the 370-row claims ledger resolved with 0 mismatches |
+| [`03_traceability.ipynb`](03_traceability.ipynb) | Every decimal token in the manuscript traced to the artifacts; the claims ledger resolved with 0 mismatches |
+| [`04_did_robustness.ipynb`](04_did_robustness.ipynb) | Stacked matched panel DiD / event-study: outcome variants, state parametrisations, design comparison, joint pre-trend Wald tests, and the full statistics menu (`did/DID_RESULTS.md`) |
 
 **How the check works.** Each exhibit is shown exactly as printed in the manuscript (`manuscript/`). The verification confirms that every decimal token in every table — estimates, confidence limits, reference moments, empirical probabilities — exists in the generating artifact JSONs at the displayed precision; the notebooks fail loudly otherwise. The two figures are regenerated from `I70.json` (which stores the 286 event-level pairs and the actual 2,000 pseudo-sample gradients) and `I68.json`.
 

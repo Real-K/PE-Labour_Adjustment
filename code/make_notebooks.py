@@ -105,4 +105,22 @@ for r in rows:
     exact += ok; mismatch += (not ok)
 print(f"claims ledger: {len(rows)} rows · exact {exact} · derived {derived} · mismatch {mismatch} · missing {missing}")
 assert mismatch == 0''')])
+build("04_did_robustness.ipynb", "# Stacked matched panel DiD — full robustness menu", COMMON,
+      [(["## Setup"], SETUP),
+       (["## Event-study coefficients — level and state interaction",
+         "Stacked matched panel with unit (event×firm) and calendar-month fixed effects; event-clustered intervals. Reference quarter −1."],
+        'runpy.run_path("code/build_figure_did.py", run_name="__main__")\n_figs = [open("figures/figure_did_eventstudy.png", "rb").read()]'),
+       (["## Event-study by pre-deal state group"],
+        '_figs = [open("figures/figure_did_bystate.png", "rb").read()]'),
+       (["## Full statistics menu",
+         "All panels (outcome variants, state parametrisations, design comparison, specification variants, magnitudes, joint pre-trend Wald tests)."],
+        'runpy.run_path("code/make_did_results.py", run_name="__main__")\n_md = open("did/DID_RESULTS.md", encoding="utf-8").read()'),
+       (["## Key assertions"],
+        """import json
+E = json.load(open("artifacts/I75.json", encoding="utf-8"))["estimates"]
+b2 = E["panelA_did"]["treat_post_S"]
+assert b2["ci"][0] > 0, b2
+assert E["panelH_magnitudes"]["pretrend_wald_level"]["p"] > 0.10
+assert E["panelH_magnitudes"]["pretrend_wald_state"]["p"] > 0.10
+print(f"β2 = {b2['coef']:+.4f} {b2['ci']} (t {b2['t']}) · pre-trend Wald p: level {E['panelH_magnitudes']['pretrend_wald_level']['p']}, state {E['panelH_magnitudes']['pretrend_wald_state']['p']}")""")])
 print("notebooks built")

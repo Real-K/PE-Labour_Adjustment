@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_notebooks import build
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 os.chdir(ROOT)
-MS = "manuscript/PE_Labour_Adjustment_manuscript_2026-08-31.md"
+MS = "manuscript/PE_Labour_Adjustment_manuscript_2026-09-02.md"
 SETUP = f'''import sys, runpy
 sys.path.insert(0, "code"); import exhibits_lib as X
 md = open("{MS}", encoding="utf-8").read()

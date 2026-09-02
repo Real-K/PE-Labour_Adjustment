@@ -16,7 +16,7 @@ Analysis code, aggregate result artifacts, and reproducible exhibits for the man
 ## Layout
 
 ```
-manuscript/   the current manuscript (Markdown)
+manuscript/   the submitted manuscript (0902 docx pair + Markdown extraction)
 artifacts/    70 aggregate result files + CLAIMS_LEDGER.csv (one row per headline claim → artifact path)
 figures/      figure1_state_gradient, figure2_quarterly (png + pdf)
 code/         exhibits_lib.py (parse + verify) · build_figure1/2.py · make_notebooks.py
